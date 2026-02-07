@@ -79,43 +79,43 @@
     </div>
     
     <script type="module">
-        import { auth } from "js/firebase.js";
-        import { signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-        
-        // Função para confirmar logout
-        window.confirmarLogout = async () => {
-            try {
-                // Mostrar loading
-                document.getElementById('loading').style.display = 'block';
-                
-                // Fazer logout no Firebase
-                await signOut(auth);
-                
-                console.log("✅ Logout realizado com sucesso");
-                
-                // Redirecionar para home após 1 segundo
-                setTimeout(() => {
-                    window.location.href = "index.html";
-                }, 1000);
-                
-            } catch (error) {
-                console.error("❌ Erro ao fazer logout:", error);
-                alert("Ocorreu um erro ao tentar sair. Tente novamente.");
-                document.getElementById('loading').style.display = 'none';
-            }
-        };
-        
-        // Função para cancelar
-        window.cancelarLogout = () => {
-            window.history.back(); // Volta para a página anterior
-        };
-        
-        // Se já estiver deslogado, redireciona
-        auth.onAuthStateChanged((user) => {
-            if (!user) {
-                window.location.href = "index.html";
-            }
-        });
-    </script>
+import { auth } from "./js/firebase.js";
+import { signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+const btnLogout = document.getElementById("btn-logout");
+const btnCancel = document.getElementById("btn-cancel");
+const loading = document.getElementById("loading");
+
+btnLogout.addEventListener("click", async () => {
+    try {
+        loading.style.display = "block";
+
+        await signOut(auth);
+
+        console.log("✅ Logout realizado");
+
+        setTimeout(() => {
+            window.location.href = "index.html";
+        }, 1000);
+
+    } catch (error) {
+        console.error("❌ Erro no logout:", error);
+        alert("Erro ao sair");
+        loading.style.display = "none";
+    }
+});
+
+btnCancel.addEventListener("click", () => {
+    window.history.back();
+});
+
+auth.onAuthStateChanged((user) => {
+    if (!user) {
+        window.location.href = "index.html";
+    }
+});
+</script>
+
 </body>
+
 </html>
