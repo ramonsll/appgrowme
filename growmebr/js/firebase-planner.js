@@ -1,4 +1,4 @@
-// firebase-planner.js - VERSÃO FINAL
+// firebase-planner.js - VERSÃO CORRETA
 import { auth, db } from "./firebase.js";
 
 import {
