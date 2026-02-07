@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Pet</title>
+    <link rel="stylesheet" href="css/pet.css">
+    <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png">  <!-- CORRIGIDO -->
+</head>
+
+<body>
+    <div class="principal">
+        <div class="header">
+            <div class="headerButon">
+                <div class="logo">
+                    <img src="img/pinguin__1_-removebg-preview.png" alt="Logo do GrowMe">
+                </div>
+                <div class="links">
+                    <a href="index.html">HOME</a>  <!-- CORRIGIDO -->
+                    <a href="pet.html">MEU PET</a>
+                    <a href="planner.html">PLANNER</a>
+                    <a href="perfil.html">MEU PERFIL</a>
+                </div>
+            </div>
+        </div>
+        <div class="conteudoCentral">
+            <h1>Digite o nome do seu pet:</h1>
+
+            <img src="./img/bebepinguin.png" alt="pinguin nivel 1" class="pinguin">
+
+            <p><span id="pontos-pet">0</span> pontos</p>
+
+            <div class="containerNivel">
+                <span class="textoNivel">NÍVEL 1</span>
+
+                <div class="barraNivel">
+                    <div class="progresso"></div>
+                </div>
+
+                <div class="marcadores">
+                    <span>0</span>
+                    <span>100</span>
+                </div>
+            </div>
+        </div>
+        <div class="textoFinal">
+            Conclua as suas metas para conquistar pontos e evoluir o nível do seu pet.
+        </div>
+    </div>
+    <script type="module" src="js/pet.js"></script>
+    <script type="module" src="js/user-data.js"></script>
+</body>
+
+</html>

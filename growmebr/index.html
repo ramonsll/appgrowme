@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GrowMe</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png">
+</head>
+
+<body>
+    <div class="principal">
+        <div class="header">
+            <div class="headerButon">
+                <div class="logo">
+                    <img src="img/pinguin__1_-removebg-preview.png" alt="Logo do GrowMe">
+                </div>
+                <div class="links">
+                    <a href="index.html">HOME</a>  <!-- CORRIGIDO -->
+                    <a href="pet.html">MEU PET</a>
+                    <a href="planner.html">PLANNER</a>
+                    <a href="perfil.html">MEU PERFIL</a>
+                </div>
+            </div>
+        </div>
+        <div class="conteudoCentral">
+            <div class="nomeSite">
+                <h1>GrowMe</h1>
+            </div>
+            <div class="imgPinguin">
+                <img src="img/pinguinzin-removebg-preview.png" alt="Imagem de um pinguim">
+            </div>
+        </div>
+        <div class="headerInferior">
+            <div class="headerInferiorButon">
+                <div class="texto">
+                    <h1>Cresça com GrowMe! Organize agora as suas metas semanais</h1>
+                </div>
+                <div class="button">
+                    <button data-modal="modalLogin" class="btn-seta">
+                        <svg width="120" height="20" viewBox="0 0 120 20" fill="none" stroke="black" stroke-width="2">
+                            <line x1="5" y1="10" x2="110" y2="10" />
+                            <polyline points="100,5 110,10 100,15" />
+                        </svg>
+                    </button>
+
+                    <dialog class="modal" id="modalLogin">
+                        <button class="close-modal" data-modal="modalLogin">
+                            X
+                        </button>
+                        <div class="principalModal">
+                            <div class="quadradoGeral">
+                                <div class="titulo">
+                                    <h1>Login</h1>
+                                </div>
+                                <div class="google" onclick="loginGoogle()">
+                                    <i class="fa-brands fa-google"></i>
+                                    <h1>Continue com Google</h1>
+                                </div>
+                                <div class="email">
+                                    <label>Email</label>
+                                    <input type="email" id="loginEmail" placeholder="Email">
+                                    <input type="password" id="loginSenha" placeholder="Senha">
+                                    <button class="entrar" onclick="login()">Entrar</button>
+                                </div>
+                                <div class="divisor">
+                                    <div class="linha"></div>
+                                </div>
+                                <div class="textoModal">
+                                    <h1>Não tem uma conta? Cadastre-se: </h1>
+                                </div>
+                                <div class="cadastro">
+                                    <div class="email">
+                                        <input type="email" id="cadEmail" placeholder="Email">
+                                    </div>
+                                    <div class="senha">
+                                        <input type="password" id="cadSenha" placeholder="Senha">
+                                        <input type="password" id="cadConfirmar" placeholder="Confirmar">
+                                        <button class="butonCads" onclick="cadastrar()">Cadastrar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </dialog>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/home.js"></script>
+    <script type="module" src="js/auth.js"></script> 
+</body>
+
+</html>

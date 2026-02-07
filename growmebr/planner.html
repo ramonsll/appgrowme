@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planner</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/planner.css">
+    <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png">  <!-- CORRIGIDO -->
+</head>
+
+<body>
+    <div class="principal">
+        <div class="header">
+            <div class="headerButon">
+                <div class="logo">
+                    <img src="img/pinguin2.png" alt="pinguinplanner" class="pinguinzito">
+                </div>
+                <div class="links">
+                    <a href="index.html">HOME</a>
+                    <a href="pet.html">MEU PET</a>
+                    <a href="planner.html">PLANNER</a>
+                    <a href="perfil.html">MEU PERFIL</a>
+                </div>
+            </div>
+        </div>
+        <div class="conteudoPlanner">
+            <div class="titulo">
+                <h1>Planner Semanal</h1>
+            </div>
+            <div class="semana">
+
+                <div class="dia">
+                    <div class="quadroGeral">
+                        <div class="nomeDia">
+                            <h1>Domingo</h1>
+                        </div>
+                        <div class="metas" id="metas-domingo"></div>
+                        <div class="adicionarMeta">
+                            <button onclick="addMeta('domingo')">+ Cadastrar meta</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dia">
+                    <div class="quadroGeral">
+                        <div class="nomeDia">
+                            <h1>Segunda-feira</h1>
+                        </div>
+                        <div class="metas" id="metas-segunda"></div>
+                        <div class="adicionarMeta">
+                            <button onclick="addMeta('segunda')">+ Cadastrar meta</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dia">
+                    <div class="quadroGeral">
+                        <div class="nomeDia">
+                            <h1>Terça-feira</h1>
+                        </div>
+                        <div class="metas" id="metas-terca"></div>
+                        <div class="adicionarMeta">
+                            <button onclick="addMeta('terca')">+ Cadastrar meta</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dia">
+                    <div class="quadroGeral">
+                        <div class="nomeDia">
+                            <h1>Quarta-feira</h1>
+                        </div>
+                        <div class="metas" id="metas-quarta"></div>
+                        <div class="adicionarMeta">
+                            <button onclick="addMeta('quarta')">+ Cadastrar meta</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dia">
+                    <div class="quadroGeral">
+                        <div class="nomeDia">
+                            <h1>Quinta-feira</h1>
+                        </div>
+                        <div class="metas" id="metas-quinta"></div>
+                        <div class="adicionarMeta">
+                            <button class="btn" onclick="addMeta('quinta')">+ Cadastrar meta</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dia">
+                    <div class="quadroGeral">
+                        <div class="nomeDia">
+                            <h1>Sexta-feira</h1>
+                        </div>
+                        <div class="metas" id="metas-sexta"></div>
+                        <div class="adicionarMeta">
+                            <button onclick="addMeta('sexta')">+ Cadastrar meta</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dia">
+                    <div class="quadroGeral">
+                        <div class="nomeDia">
+                            <h1>Sábado</h1>
+                        </div>
+                        <div class="metas" id="metas-sabado"></div>
+                        <div class="adicionarMeta">
+                            <button onclick="addMeta('sabado')">+ Cadastrar meta</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <!-- APENAS ESTES SCRIPTS -->
+    <script type="module" src="js/user-data.js"></script>
+    <script type="module" src="js/planner.js"></script>
+</body>
+
+</html>

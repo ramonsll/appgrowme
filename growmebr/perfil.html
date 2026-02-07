@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seu Perfil</title>
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png">
+</head>
+
+<body>
+    <div class="principal">
+        <div class="header">
+            <div class="headerButon">
+                <div class="logo">
+                    <img src="img/pinguin__1_-removebg-preview.png" alt="Logo do GrowMe">
+                </div>
+                <div class="links">
+                    <a href="index.html">HOME</a>
+                    <a href="pet.html">MEU PET</a>
+                    <a href="planner.html">PLANNER</a>
+                    <a href="perfil.html">MEU PERFIL</a>
+                </div>
+            </div>
+        </div>
+        <div class="nome">
+            <div class="edit-nome">
+                <h1>Olá, <span id="nome-usuario">seunome</span>!</h1>
+                <a class="edit-name" id="btn-editar-nome" href="#">Editar nome</a>
+            </div>
+        </div>
+        <div class="metas">
+            <div class="metasCadastradas">
+                <div class="valorCadastradas">
+                    <h1 id="contador-cadastradas">0</h1>
+                </div>
+                <div class="texto">
+                    <h1>Metas cadastradas</h1>
+                </div>
+            </div>
+            <div class="metasConcluidas">
+                <div class="valorConcluidas">
+                    <h1 id="contador-concluidas">0</h1>
+                </div>
+                <div class="textoC">
+                    <h1>Metas concluídas</h1>
+                </div>
+            </div>
+        </div>
+        <div class="menuInferior">
+            <div class="menuButton">
+                <div class="linksInferior">
+                    <a href="privacitypolitc.html">POLÍTICA DE PRIVACIDADE</a>
+                    <a href="dados.html">MEUS DADOS</a>
+                    <a href="sair.html">SAIR</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- REMOVA o script planner.js - não é necessário aqui -->
+    <script type="module" src="js/user-data.js"></script>
+    <script type="module" src="js/perfil.js"></script>
+</body>
+
+</html>

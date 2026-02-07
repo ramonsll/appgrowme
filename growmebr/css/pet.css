@@ -1,0 +1,236 @@
+body {
+    background-color: #d9e1e1;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.principal{
+    width: 100%;
+    height: 100vh;
+    background-color: #d9e1e1;
+}
+
+.header{
+    width: 100%;
+    height: 20%;
+    background-color: #d9e1e1;
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+}
+.headerButon{
+    width: 90%;
+    height: 40%;
+    background-color: #0000008A;
+    border-radius: 3.125rem;
+    display: flex;
+}
+.headerButon:hover{
+    width: 91%;
+    height: 41%;
+    transition: 0.4s ease;
+}
+.logo{
+    width: 50%;
+    height: 100%;
+    background-color: transparent;
+    border-radius: 3.125rem 0 0 3.125rem;
+    display: flex;
+    align-items: center;
+    
+}
+.logo img{
+    width: 3.5rem;
+    height: auto;
+    margin-top: 0px;
+    margin-left: 25px;
+}
+.links{
+    width:50%;
+    height: 100%;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 0 3.125rem 3.125rem 0;
+}
+.links a{
+    text-decoration: none;
+    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 0.9375rem;
+    font-weight:200;
+    color: white;
+}
+.links a:hover{
+    color: black;
+    font-size: 1.0625rem;
+    font-weight: 500;
+    transition: 0.2s ease;
+}
+.conteudoCentral{
+    width: 100%;
+    height: 60%;
+    background-color: #d9e1e1;
+    text-align: center;
+}
+.conteudoCentral h1 {
+    color: #181818;
+    font-size: 1.125rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 500;
+    margin-top: 3.125rem;
+}
+.pinguin {
+    width: 8.75rem;
+    display: block;
+    margin: 0.625rem auto;
+    align-items: center;
+    justify-content: center;
+}
+.pontos {
+    color: #181818;
+    margin: 0.625rem 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 0.9375rem
+    font-weight: 700;
+}
+.containerNivel {
+    margin-top: 3.125rem;
+}
+.textoNivel {
+    color: #181818;
+    display: block;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.3125rem;
+}
+.barraNivel {
+    width: 14.375rem;
+    height: 1.25rem;
+    background: white;
+    border-radius: 1.25rem;
+    border: 0.125rem solid #000;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+}
+.progresso {
+    width: 0%; /* aqui você aumenta conforme o nível */
+    height: 100%;
+    background: #7ba9a9;
+    transition: width 0.5s ease;
+}
+.marcadores {
+    width: 14.375rem;
+    margin: 0.3125rem auto 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.875rem;
+}
+.textoFinal{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: #181818;
+}
+/* Animação de pulo */
+@keyframes pulinho {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20px) scale(1.1); }
+    100% { transform: translateY(0); }
+}
+
+.animar-pulo {
+    animation: pulinho 0.5s ease;
+}
+
+/* Transição suave para a troca de imagem */
+.pinguin {
+    transition: all 0.5s ease;
+}
+
+/* --- RESPONSIVIDADE PÁGINA DO PET --- */
+@media screen and (max-width: 768px) {
+    
+    /* 1. Ajuste do Header (Menu Superior) */
+    .header {
+        height: auto;
+        padding: 15px 0;
+    }
+
+    .headerButon {
+        flex-direction: column; /* Logo em cima, links embaixo */
+        height: auto !important; /* Força a altura a se adaptar ao conteúdo */
+        width: 95% !important;
+        border-radius: 20px;
+        padding: 15px 0;
+        gap: 10px;
+    }
+
+    .headerButon:hover {
+        width: 95% !important; /* Trava o tamanho no mobile */
+        height: auto !important;
+    }
+
+    .logo, .links {
+        width: 100%;
+        justify-content: center;
+        border-radius: 0;
+    }
+
+    .logo img {
+        margin-left: 0;
+        width: 3rem;
+    }
+
+    /* Links organizados em 2 colunas para facilitar o toque */
+    .links {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        gap: 10px;
+        padding: 5px;
+    }
+
+    /* 2. Conteúdo Central (Pinguim e Evolução) */
+    .conteudoCentral {
+        height: auto;
+        padding: 20px 0;
+    }
+
+    .conteudoCentral h1 {
+        font-size: 1.5rem; /* Aumenta um pouco o "Olá, ramon" no mobile */
+        margin-top: 1.5rem;
+    }
+
+    .pinguin {
+        width: 10rem; /* Aumenta um pouco o pinguim no celular para destaque */
+    }
+
+    /* 3. Barra de Nível */
+    .barraNivel {
+        width: 85%; /* No mobile, usamos % para não estourar a tela */
+        max-width: 18rem; /* Mas limitamos para não ficar gigante em tablets */
+        height: 1.5rem; /* Barra um pouco mais gordinha para toque */
+    }
+
+    .marcadores {
+        width: 85%;
+        max-width: 18rem;
+    }
+
+    .containerNivel {
+        margin-top: 2rem;
+    }
+
+    /* 4. Ajuste Geral do Fundo */
+    .principal {
+        height: auto;
+        min-height: 100vh;
+    }
+}
