@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meu Pet</title>
     <link rel="stylesheet" href="css/pet.css">
-    <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png">  <!-- CORRIGIDO -->
+    <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png"> <!-- CORRIGIDO -->
 </head>
 
 <body>
@@ -17,7 +17,7 @@
                     <img src="img/pinguin__1_-removebg-preview.png" alt="Logo do GrowMe">
                 </div>
                 <div class="links">
-                    <a href="index.html">HOME</a>  <!-- CORRIGIDO -->
+                    <a href="index.html">HOME</a> <!-- CORRIGIDO -->
                     <a href="pet.html">MEU PET</a>
                     <a href="planner.html">PLANNER</a>
                     <a href="perfil.html">MEU PERFIL</a>
@@ -25,9 +25,16 @@
             </div>
         </div>
         <div class="conteudoCentral">
-            <h1>Digite o nome do seu pet:</h1>
+            <div class="edit-nome-pet">
+                <div class="titulo-edit-container">
+                    <h1>
+                        <span id="nome-pet">Clique para definir o nome</span>
+                    </h1>
+                    <a href="#" id="btnEditarPet" class="edit-icon-btn"></a>
+                </div>
+            </div>
 
-            <img src="/img/babypinguin.png" alt="pinguin nivel 1" class="pinguin">
+            <img src="img/babypinguin.png" alt="pinguin nivel 1" class="pinguin">
 
             <p><span id="pontos-pet">0</span> pontos</p>
 
@@ -48,21 +55,8 @@
             Conclua as suas metas para conquistar pontos e evoluir o nível do seu pet.
         </div>
     </div>
-    <script type="module" src="js/pet.js"></script>
+    <script type="module" src="./js/pet.js"></script>
     <script type="module" src="js/user-data.js"></script>
 </body>
 
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
