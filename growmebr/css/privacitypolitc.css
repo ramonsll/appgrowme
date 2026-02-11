@@ -1,63 +1,106 @@
+:root {
+    --bg-color: #d9e1e1;
+    --card-bg: #ffffff;
+    --text-primary: #181818;
+    --text-secondary: #485b5b;
+    --accent-color: #7ba9a9;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
 body {
-    background-color: #d9e1e1;
+    background-color: var(--bg-color);
     margin: 0;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    color: var(--text-primary);
+    line-height: 1.6;
 }
-.titulo{
-    width: 100%;
-    height: 15%;
-    background-color: #d9e1e1;
+
+.principal {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: center;
+    min-height: 100vh;
+    padding: 40px 20px;
 }
-.titulo h1{
-    font-size: 45px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
-    color: #181818;
+
+/* Título */
+.titulo {
+    text-align: center;
+    margin-bottom: 40px;
 }
-.politic{
+
+.titulo h1 {
+    font-size: 3rem;
+    font-weight: 500;
+    margin: 0;
+    color: var(--text-primary);
+}
+
+/* Área do Texto (Cartão) */
+.politic {
     width: 100%;
-    height: 65%;
-    background-color: #d9e1e1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    max-width: 850px; /* Limita a largura para melhor leitura */
+    background-color: var(--card-bg);
+    padding: 50px;
+    border-radius: 25px;
+    box-shadow: var(--shadow);
 }
-.politic p{
-    margin: 50px;
-    text-align: justify;
-    text-justify: inter-word; 
-    font-size: 18px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 400;
-    color: #181818;
+
+.politic p {
+    margin: 0;
+    text-align: left; /* Justificado em telas grandes pode criar buracos brancos estranhos */
+    font-size: 1.1rem;
+    color: var(--text-primary);
 }
-.partInfrior{
+
+/* Estilizando os tópicos (1, 2, 3...) */
+.politic b {
+    display: block;
+    font-size: 1.4rem;
+    margin-top: 30px;
+    color: var(--text-secondary);
+    border-bottom: 2px solid var(--bg-color);
+    padding-bottom: 5px;
+}
+
+/* Parte Inferior e Botão */
+.partInfrior {
     width: 100%;
-    height: 20%;
-    background-color:#d9e1e1;
-}
-.button{
-    width: 18%;
-    height: 60%;
-    background-color: #d9e1e15e;
-    border-radius: 50px 50px 50px 50px;
+    max-width: 850px;
+    margin-top: 40px;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 60px;;
+    justify-content: flex-start;
 }
+
 .btn-seta {
-    background-color: #bfc4c6;
-    border: black 2px solid;
-    width: 60%;
-    height: 100%;
-    border-radius: 40px;
-    font-size: 22px;
+    background-color: var(--card-bg);
+    border: 2px solid var(--text-primary);
+    padding: 15px 40px;
+    border-radius: 50px;
     cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
+
 .btn-seta:hover {
-    background-color: #d0d5d7;
+    background-color: var(--text-primary);
+    transform: translateX(-10px); /* Efeito de movimento para a esquerda */
+}
+
+.btn-seta:hover svg {
+    stroke: white; /* Muda a cor da seta no hover */
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .politic {
+        padding: 25px;
+    }
+    .titulo h1 {
+        font-size: 2.2rem;
+    }
 }
