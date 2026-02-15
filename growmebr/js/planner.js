@@ -103,7 +103,6 @@ function criarMetaNaTela(textoMeta, estaConcluida, dia, metaId, area) {
         e.preventDefault();
         if (confirm("Deseja excluir esta meta?")) {
             // Remover do Firestore
-            const sucesso = await plannerFirestore.removerMeta(dia, metaId);
             if (sucesso) {
                 // Remover da tela
                 metaDiv.remove();
