@@ -107,14 +107,6 @@ function criarMetaNaTela(textoMeta, estaConcluida, dia, metaId, area) {
             if (sucesso) {
                 // Remover da tela
                 metaDiv.remove();
-                
-                // Atualizar contadores
-                totalMetas--;
-                if (metaDiv.classList.contains("concluida")) {
-                    totalConcluidas--;
-                }
-                atualizarContadores();
-                
                 // Sincronizar com outras páginas (perfil/pet)
                 await sincronizarComUserData();
             }
