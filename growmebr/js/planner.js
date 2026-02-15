@@ -1,8 +1,8 @@
-// planner.js - VERSÃO COM HISTÓRICO DE CONTADORES
+// planner.js - VERSÃO FINAL
 import { plannerFirestore } from "./firebase-planner.js";
 import { userDataManager } from "./user-data.js";
 
-// Variáveis globais (mantêm o estado da sessão)
+// Variáveis globais
 let totalMetas = 0;
 let totalConcluidas = 0;
 
@@ -25,12 +25,11 @@ async function inicializarPlanner() {
     if (metas) {
         console.log("Metas carregadas:", metas);
         exibirMetasNaTela(metas);
-        
-        // No carregamento inicial, calculamos o que existe no banco
         calcularContadores(metas);
         atualizarContadores();
     } else {
         console.log("Nenhuma meta carregada ou usuário não autenticado");
+        // Mostrar mensagem se não estiver logado
         if (!plannerFirestore.userId) {
             alert("Você precisa fazer login para usar o planner!");
             window.location.href = "home.html";
@@ -40,10 +39,12 @@ async function inicializarPlanner() {
 
 // Exibir metas na tela
 function exibirMetasNaTela(metas) {
+    // Limpar todas as áreas de metas
     document.querySelectorAll('.metas').forEach(area => {
         area.innerHTML = '';
     });
     
+    // Para cada dia, criar as metas
     Object.entries(metas).forEach(([dia, listaMetas]) => {
         const area = document.getElementById(`metas-${dia}`);
         if (area && Array.isArray(listaMetas)) {
@@ -75,7 +76,7 @@ function criarMetaNaTela(textoMeta, estaConcluida, dia, metaId, area) {
     metaDiv.appendChild(texto);
     area.appendChild(metaDiv);
     
-    // EVENTO: CLICAR (CONCLUIR)
+    // Adicionar eventos
     metaDiv.addEventListener('click', async () => {
         const novaConclusao = !metaDiv.classList.contains("concluida");
         metaDiv.classList.toggle("concluida");
@@ -85,37 +86,35 @@ function criarMetaNaTela(textoMeta, estaConcluida, dia, metaId, area) {
         const sucesso = await plannerFirestore.atualizarMeta(dia, metaId, novaConclusao);
         
         if (sucesso) {
-            // Se concluiu, sobe o contador. Se desmarcou, desce (opcional, mas evita spam de pontos)
+            // Atualizar contadores
             if (novaConclusao) {
                 totalConcluidas++;
             } else {
                 totalConcluidas--;
             }
             atualizarContadores();
+            
+            // Sincronizar com outras páginas (perfil/pet)
             await sincronizarComUserData();
         }
     });
     
-    // EVENTO: CONTEXT MENU (APAGAR)
     metaDiv.addEventListener('contextmenu', async (e) => {
         e.preventDefault();
         if (confirm("Deseja excluir esta meta?")) {
             // Remover do Firestore
             const sucesso = await plannerFirestore.removerMeta(dia, metaId);
             if (sucesso) {
-                // APENAS remove da tela. 
-                // NÃO decrementamos totalMetas nem totalConcluidas aqui.
+                // Remover da tela
                 metaDiv.remove();
-                
-                // Sincroniza sem recalcular do zero para não perder o histórico da sessão
+                // Sincronizar com outras páginas (perfil/pet)
                 await sincronizarComUserData();
-                console.log("Meta removida da visualização, mas mantida no contador.");
             }
         }
     });
 }
 
-// Calcular contadores (Usa-se apenas no carregamento inicial da página)
+// Calcular contadores a partir das metas
 function calcularContadores(metas) {
     totalMetas = 0;
     totalConcluidas = 0;
@@ -141,17 +140,16 @@ function atualizarContadores() {
     }
 }
 
-// Sincronizar com UserDataManager
+// Sincronizar com UserDataManager (para perfil/pet)
 async function sincronizarComUserData() {
     try {
         if (userDataManager && userDataManager.userId) {
-            // Enviamos os totais atuais da sessão para o manager de perfil/pet
-            // Isso garante que o pet/perfil receba o bônus mesmo que a meta tenha sido apagada
-            await userDataManager.atualizarMetas({
-                totalCadastradas: totalMetas,
-                totalConcluidas: totalConcluidas
-            });
-            console.log("✅ Dados sincronizados com perfil/pet");
+            // Carregar metas atualizadas
+            const metasAtualizadas = await plannerFirestore.carregarMetas();
+            if (metasAtualizadas) {
+                await userDataManager.atualizarMetas(metasAtualizadas);
+                console.log("✅ Dados sincronizados com perfil/pet");
+            }
         }
     } catch (error) {
         console.warn("Não foi possível sincronizar:", error);
@@ -160,6 +158,7 @@ async function sincronizarComUserData() {
 
 // FUNÇÃO PARA ADICIONAR NOVA META
 async function addMeta(dia) {
+    // Verificar se usuário está autenticado
     if (!plannerFirestore.userId) {
         alert("Faça login primeiro!");
         window.location.href = "home.html";
@@ -169,6 +168,7 @@ async function addMeta(dia) {
     const area = document.getElementById(`metas-${dia}`);
     if (!area) return;
     
+    // Criar elemento temporário para entrada de texto
     const tempDiv = document.createElement("div");
     tempDiv.classList.add("meta", "editando");
     
@@ -186,27 +186,36 @@ async function addMeta(dia) {
     area.appendChild(tempDiv);
     textarea.focus();
     
+    // Função para salvar a meta
     const salvarMeta = async () => {
         const texto = textarea.value.trim();
         if (texto) {
+            // Salvar no Firestore
             const novaMeta = await plannerFirestore.adicionarMeta(dia, texto, false);
             if (novaMeta) {
+                // Sincronizar com outras páginas
+                await sincronizarComUserData();
+                
+                // Remover o elemento de edição
                 tempDiv.remove();
+                
+                // Adicionar a meta real na tela
                 criarMetaNaTela(texto, false, dia, novaMeta.id, area);
                 
-                // Incrementa o contador de cadastradas
+                // Atualizar contadores
                 totalMetas++;
                 atualizarContadores();
                 
-                await sincronizarComUserData();
                 return true;
             }
         } else {
+            // Se estiver vazio, remover
             tempDiv.remove();
         }
         return false;
     };
     
+    // Evento para salvar com Enter
     textarea.addEventListener('keydown', async (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
@@ -214,6 +223,7 @@ async function addMeta(dia) {
         }
     });
     
+    // Evento para salvar quando perder o foco
     textarea.addEventListener('blur', async () => {
         setTimeout(async () => {
             if (document.body.contains(textarea)) {
@@ -223,4 +233,5 @@ async function addMeta(dia) {
     });
 }
 
+// Tornar a função global para ser chamada do HTML
 window.addMeta = addMeta;
