@@ -89,9 +89,9 @@ function criarMetaNaTela(textoMeta, estaConcluida, dia, metaId, area) {
             // Atualizar contadores
             if (novaConclusao) {
                 totalConcluidas++;
-            } else {
-                totalConcluidas--;
-            }
+
+                await userDataManager.registrarMetaConcluida();
+            } 
             atualizarContadores();
             
             // Sincronizar com outras páginas (perfil/pet)
@@ -205,6 +205,8 @@ async function addMeta(dia) {
                 // Atualizar contadores
                 totalMetas++;
                 atualizarContadores();
+
+                await userDataManager.registrarMetaCriada();
                 
                 return true;
             }
