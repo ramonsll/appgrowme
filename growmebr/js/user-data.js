@@ -37,8 +37,34 @@ class UserDataManager {
 
             if (userSnap.exists()) {
                 this.userData = userSnap.data();
+
+                // ✅ Corrigir histórico se não existir
+                if (!this.userData.historicoMetas) {
+                    console.log("⚠️ Histórico não encontrado. Gerando automaticamente...");
+
+                    let totalCriadas = 0;
+                    let totalConcluidas = 0;
+
+                    const metas = this.userData.metas || {};
+
+                    Object.values(metas).forEach(dia => {
+                        if (Array.isArray(dia)) {
+                            totalCriadas += dia.length;
+                            totalConcluidas += dia.filter(m => m.concluida).length;
+                        }
+                    });
+
+                    this.userData.historicoMetas = {
+                        totalCriadas,
+                        totalConcluidas
+                    };
+
+                    await this.salvarDados();
+                }
+
                 console.log("📊 UserDataManager: Dados carregados", this.userData);
-            } else {
+            }
+            else {
                 // Criar estrutura inicial
                 this.userData = this.criarEstruturaInicial();
                 await this.salvarDados();
@@ -62,11 +88,18 @@ class UserDataManager {
                 domingo: [], segunda: [], terca: [], quarta: [],
                 quinta: [], sexta: [], sabado: []
             },
+
+            historicoMetas: {
+                totalCriadas: 0,
+                totalConcluidas: 0
+            },
+
             pet: {
                 nome: "",
                 nivel: 1,
                 pontos: 0
             },
+
             configuracoes: {
                 tema: "claro",
                 notificacoes: true
@@ -189,6 +222,22 @@ class UserDataManager {
         if (this.unsubscribe) {
             this.unsubscribe();
         }
+    }
+
+    // Registrar nova meta criada
+    async registrarMetaCriada() {
+        if (!this.userData) return;
+
+        this.userData.historicoMetas.totalCriadas++;
+        await this.salvarDados();
+    }
+
+    // Registrar meta concluída
+    async registrarMetaConcluida() {
+        if (!this.userData) return;
+
+        this.userData.historicoMetas.totalConcluidas++;
+        await this.salvarDados();
     }
 }
 
