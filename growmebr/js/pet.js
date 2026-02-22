@@ -64,8 +64,8 @@ function atualizarInterfacePet(dadosUsuario) {
         }
     }
 
-    // Obter pontos pelo histórico (mais confiável)
-    let pontos = dadosUsuario.historicoMetas?.totalConcluidas || 0;
+// Obter pontos pelo histórico (mais confiável)
+let pontos = dadosUsuario.historicoMetas?.totalConcluidas || 0;
 
     // Atualizar dados do pet (se necessário)
     const dadosPetAtuais = dadosUsuario.pet || { nome: "", nivel: 1, pontos: 0 };
@@ -115,7 +115,7 @@ function ativarEdicaoPet() {
     if (!spanNomePet || spanNomePet.querySelector('input')) return;
 
     const nomeAtual = spanNomePet.textContent.trim();
-
+    
     // Criar input para edição
     const input = document.createElement('input');
     input.type = 'text';
@@ -139,7 +139,7 @@ function ativarEdicaoPet() {
     const encerrarEdicao = async () => {
         const novoNome = input.value.trim() || "Meu Pet";
         await userDataManager.atualizarNomePet(novoNome);
-
+        
         // O onSnapshot do userDataManager vai atualizar o texto via atualizarInterfacePet,
         // mas vamos limpar o input agora para uma transição fluida
         spanNomePet.textContent = novoNome;
