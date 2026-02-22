@@ -10,7 +10,7 @@ const imgPinguim = document.querySelector('.pinguin');
 // Configurações do sistema de níveis
 const METAS_NIVEIS = [100, 300, 500, 750, 1000];
 const IMAGENS_NIVEIS = {
-    1: "babypinguin.png",
+    1: "./img/babypinguin.png",
     2: "pinguim_nivel2.png",
     3: "pinguim_nivel3.png",
     4: "pinguim_nivel4.png",  // Adicione suas imagens
@@ -182,3 +182,4 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 1000);
 });
+
