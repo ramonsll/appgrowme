@@ -10,7 +10,12 @@ const imgPinguim = document.querySelector('.pinguin');
 // Configurações do sistema de níveis
 const METAS_NIVEIS = [100, 300, 500, 750, 1000];
 const IMAGENS_NIVEIS = {
-    1: "./img/babypinguin.png",
+    1: "babypinguin.png",
+    2: "pinguim_nivel2.png",
+    3: "pinguim_nivel3.png",
+    4: "pinguim_nivel4.png",  // Adicione suas imagens
+    5: "pinguim_nivel5.png",  // Adicione suas imagens
+    max: "pinguim_maximo.png"  // Adicione sua imagem
 };
 
 // Calcular nível baseado nos pontos
@@ -59,15 +64,8 @@ function atualizarInterfacePet(dadosUsuario) {
         }
     }
 
-    // Obter pontos das metas concluídas
-    const metas = dadosUsuario.metas || {};
-    let pontos = 0;
-
-    Object.values(metas).forEach(dia => {
-        if (Array.isArray(dia)) {
-            pontos += dia.filter(meta => meta.concluida).length;
-        }
-    });
+    // Obter pontos pelo histórico (mais confiável)
+    let pontos = dadosUsuario.historicoMetas?.totalConcluidas || 0;
 
     // Atualizar dados do pet (se necessário)
     const dadosPetAtuais = dadosUsuario.pet || { nome: "", nivel: 1, pontos: 0 };
@@ -105,6 +103,7 @@ function atualizarInterfacePet(dadosUsuario) {
             }, 500);
         }
     }
+    console.log("METAS:", metas);
 }
 
 // ====== EDITAR NOME DO PET ======
@@ -116,7 +115,7 @@ function ativarEdicaoPet() {
     if (!spanNomePet || spanNomePet.querySelector('input')) return;
 
     const nomeAtual = spanNomePet.textContent.trim();
-    
+
     // Criar input para edição
     const input = document.createElement('input');
     input.type = 'text';
@@ -140,7 +139,7 @@ function ativarEdicaoPet() {
     const encerrarEdicao = async () => {
         const novoNome = input.value.trim() || "Meu Pet";
         await userDataManager.atualizarNomePet(novoNome);
-        
+
         // O onSnapshot do userDataManager vai atualizar o texto via atualizarInterfacePet,
         // mas vamos limpar o input agora para uma transição fluida
         spanNomePet.textContent = novoNome;
@@ -183,4 +182,3 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 1000);
 });
-
