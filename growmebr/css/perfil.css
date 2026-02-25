@@ -1,324 +1,91 @@
-body {
+/* Configurações Gerais */
+.bg-custom {
     background-color: #d9e1e1;
-    margin: 0;
-    font-family: Arial, sans-serif;
+    font-family: system-ui, -apple-system, sans-serif;
 }
 
-.principal{
-    width: 100%;
-    height: 100vh;
-    background-color: #d9e1e1;
+/* Header (Fix para não arredondar ao abrir e pinguim) */
+.bg-header-custom {
+    background-color: #0000008A !important;
 }
 
-.header{
-    width: 100%;
-    height: 20%;
-    background-color: #d9e1e1;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-}
-.headerButon{
-    width: 90%;
-    height: 40%;
-    background-color: #0000008A;
-    border-radius: 3.125rem;
-    display: flex;
-}
-.headerButon:hover{
-    width: 91%;
-    height: 41%;
-    transition: 0.4s ease;
-}
-.logo{
-    width: 50%;
-    height: 100%;
-    background-color: transparent;
-    border-radius: 3.125rem 0 0 3.125rem;
-    display: flex;
-    align-items: center;
-    
-}
-.logo img{
-    width: 3.5rem;
-    height: auto;
-    margin-top: 0px;
-    margin-left: 25px;
-}
-.links{
-    width:50%;
-    height: 100%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 0 3.125rem 3.125rem 0;
-}
-.links a{
-    text-decoration: none;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 0.9375rem;
-    font-weight:200;
-    color: white;
-}
-.links a:hover{
-    color: black;
-    font-size: 1.0625rem;
-    font-weight: 500;
-    transition: 0.2s ease;
+.my-nav-container {
+    min-height: 60px;
+    position: relative;
 }
 
-.nome {
-    width: 100%;
-    height: 15%;
-    background-color: transparent;
-    text-align: center;
+.pinguin-logo {
+    height: 80px; /* Ajuste para o seu pinguim deitado */
+    position: absolute;
+    top: -25px;
+    left: 10px;
 }
 
-.titulo-edit {
-    display: inline-flex;
-    align-items: flex-end;
-    gap: 6px;
+@media (max-width: 991.98px) {
+    .my-nav-container.rounded-pill {
+        border-radius: 30px !important;
+    }
 }
 
-.nome h1 {
-    margin: 0;
-    font-size: 45px;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 600;
+.nav-link:hover {
+    color: #000 !important;
+}
+
+.navbar-toggler-icon {
+    filter: invert(1);
+}
+
+/* Tipografia e Cores */
+.color-accent {
+    color: #485b5b;
+}
+
+h1.display-4 {
     color: #181818;
 }
 
 .edit-name {
     font-size: 14px;
     color: #333;
-    text-decoration: none;
+    text-decoration: underline;
     position: relative;
-    padding-right: 18px;
-    margin-bottom: 6px; /* ajuste fino pra alinhar com a base do h1 */
-    text-decoration: underline;;
+    padding-right: 20px;
 }
 
 .edit-name::after {
-    content: "";
-    width: 14px;
-    height: 14px;
+    content: "✎"; /* Simplificado ou use sua imagem SVG */
     position: absolute;
     right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23333" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 000-1.41l-2.34-2.34a1.003 1.003 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>');
-    background-size: contain;
-    background-repeat: no-repeat;
-    opacity: 0.6;
 }
-.metas{
-    width: 100%;
-    height: 45%;
-    background-color: transparent;
-    display: flex;
-}
-.metasCadastradas{
-    margin-left: 10%;
-    width: 50%;
-    height: 100%;
-    background-color: transparent;
-}
-.valorCadastradas{
-    width: 100%;
-    height:35%;
-    background-color: transparent;
-    display: flex;
-    align-items: flex-end;
-    justify-content:center;;
-}
-.valorCadastradas h1{
-    margin: 0;
-    font-size: 35px;
-    text-align: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 700;
-    color: #485b5b;
-}
-.texto{
-    width: 100%;
-    height: 50%;
-    background-color: transparent;;
-    display: flex;
-    align-items: flex-start;
-    justify-content:center;
-}
-.texto h1{
-    margin: 0;
-    font-size: 28px;
-    text-align: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 630;
-    color: #181818;
-}
-.metasConcluidas{
-    margin-right: 10% ;
-    width: 50%;
-    height: 100%;
-    background-color: transparent;
-}
-.valorConcluidas{
-    width: 100%;
-    height:35%;
-    background-color: transparent;;
-    display: flex;
-    align-items: flex-end;
-    justify-content:center;
-}
-.valorConcluidas h1{
-    margin: 0;
-    font-size: 35px;
-    text-align: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 700;
-    color: #485b5b;
-}
-.textoC{
-    width: 100%;
-    height: 50%;
-    background-color: transparent;
-    display: flex;
-    align-items: flex-start;
-    justify-content:center;
-}
-.textoC h1{
-    margin: 0;
-    font-size: 28px;
-    text-align: center;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: 630;
-    color: #181818;
-}
-.menuInferior{
-    width: 100%;
-    height: 20%;
-    background-color: #d9e1e1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.menuButton{
-    width: 40%;
-    height: 30%;
-    background-color: #7ba9a994;;
-    display: flex;
-    align-items: space-between;
-    justify-content: center;
+
+/* Menu Inferior Estilizado */
+.menuButton {
+    background-color: #7ba9a994;
     border-radius: 30px;
     border: #181818 1px solid;
 }
-.linksInferior{
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    width: 100%;
-    height: 100%;
-}
-.linksInferior a{
+
+.link-footer {
     text-decoration: none;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 15px;
-    font-weight: 200;
+    font-size: 13px;
     color: #181818;
+    letter-spacing: 0.5px;
 }
-.linksInferior a:hover{
+
+.link-footer:hover {
     text-decoration: underline;
 }
-/* Usamos o seletor da classe para ser bem específico */
+
+/* Input de edição customizado (seletor do seu script) */
 input.input-nome-edicao {
     font-size: inherit !important;
     font-family: inherit !important;
     font-weight: inherit !important;
     color: inherit !important;
-    
     background: transparent !important;
-    background-color: transparent !important;
-    
-    /* Mata todas as bordas e contornos */
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-    
-    padding: 0 !important;
-    margin: 0 !important;
-    
-    /* Faz o input não ter aparência de sistema */
-    appearance: none;
-    -webkit-appearance: none;
-    
-    display: inline-block;
     width: auto;
-}
-
-/* --- CONFIGURAÇÕES PARA DISPOSITIVOS MÓVEIS --- */
-@media screen and (max-width: 768px) {
-    .principal {
-        height: auto;
-        min-height: 100vh;
-    }
-
-    .header {
-        height: auto;
-        padding: 20px 0;
-    }
-
-    .headerButon {
-        flex-direction: column;
-        height: auto;
-        width: 95%;
-        border-radius: 20px;
-        padding: 15px 0;
-        gap: 10px;
-    }
-
-    .headerButon:hover { width: 95%; }
-
-    .logo, .links {
-        width: 100%;
-        justify-content: center;
-        border-radius: 0;
-    }
-
-    .logo img { margin-left: 0; width: 3rem; }
-
-    .links {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .nome h1 { font-size: 30px; }
-
-    .metas {
-        flex-direction: column;
-        height: auto;
-        gap: 40px;
-        padding: 20px 0;
-    }
-
-    .metasCadastradas, .metasConcluidas {
-        width: 100%;
-        margin: 0;
-    }
-
-    .texto h1, .textoC h1 { font-size: 24px; }
-
-    .menuInferior { padding: 30px 0; }
-
-    .menuButton {
-        width: 85%;
-        height: auto;
-        padding: 15px;
-    }
-
-    .linksInferior {
-        flex-wrap: wrap;
-        gap: 15px;
-    }
+    text-align: center;
 }
