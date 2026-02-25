@@ -1,63 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Pet</title>
+    <title>Meu Pet - GrowMe</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="css/pet.css">
-    <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png"> <!-- CORRIGIDO -->
+    <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png">
 </head>
 
 <body>
-    <div class="principal">
-        <div class="header">
-            <div class="headerButon">
-                <div class="logo">
-                    <img src="img/pinguin__1_-removebg-preview.png" alt="Logo do GrowMe">
-                </div>
-                <div class="links">
-                    <a href="index.html">HOME</a> <!-- CORRIGIDO -->
-                    <a href="pet.html">MEU PET</a>
-                    <a href="planner.html">PLANNER</a>
-                    <a href="perfil.html">MEU PERFIL</a>
-                </div>
-            </div>
-        </div>
-        <div class="conteudoCentral">
-            <div class="edit-nome-pet">
-                <div class="titulo-edit-container">
-                    <h1>
-                        <span id="nome-pet">Clique para definir o nome</span>
-                    </h1>
-                    <a href="#" id="btnEditarPet" class="edit-icon-btn"></a>
+    <div class="principal d-flex flex-column min-vh-100">
+        
+        <nav class="navbar navbar-expand-lg mt-4">
+            <div class="container bg-header-custom rounded-pill py-2 px-4 shadow-hover">
+                <a class="navbar-brand d-flex align-items-center" href="index.html">
+                    <img src="img/pinguin__1_-removebg-preview.png" alt="Logo" width="50">
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon text-white"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="navbar-nav gap-3 text-center">
+                        <a class="nav-link text-white fw-light" href="index.html">HOME</a>
+                        <a class="nav-link text-white fw-bold active" href="pet.html">MEU PET</a>
+                        <a class="nav-link text-white fw-light" href="planner.html">PLANNER</a>
+                        <a class="nav-link text-white fw-light" href="perfil.html">MEU PERFIL</a>
+                    </div>
                 </div>
             </div>
+        </nav>
 
-            <img src="./img/babypinguin.png" alt="pinguin nivel 1" class="pinguin">
+        <main class="container text-center my-auto py-5">
+            <div class="d-flex align-items-center justify-content-center gap-2 mb-4">
+                <h1 class="h4 fw-bold m-0" id="nome-pet">Clique para definir o nome</h1>
+                <a href="#" id="btnEditarPet" class="edit-icon-btn"></a>
+            </div>
 
-            <p><span id="pontos-pet">0</span> pontos</p>
+            <div class="mb-3">
+                <img src="./img/babypinguin.png" alt="pinguim nivel 1" class="img-fluid pinguin anim-pinguim">
+            </div>
 
-            <div class="containerNivel">
-                <span class="textoNivel">NÍVEL 1</span>
+            <p class="fw-bold text-dark fs-5"><span id="pontos-pet">0</span> pontos</p>
 
-                <div class="barraNivel">
-                    <div class="progresso"></div>
+            <div class="container-nivel mx-auto" style="max-width: 300px;">
+                <span class="d-block fw-bold text-uppercase mb-2 small">Nível 1</span>
+                
+                <div class="progress rounded-pill border border-dark border-2" style="height: 25px; background-color: white;">
+                    <div class="progress-bar progress-bar-striped progress-bar-animated bg-teal-custom" 
+                         role="progressbar" 
+                         style="width: 0%" 
+                         id="progresso-pet" 
+                         aria-valuenow="0" 
+                         aria-valuemin="0" 
+                         aria-valuemax="100">
+                    </div>
                 </div>
 
-                <div class="marcadores">
+                <div class="d-flex justify-content-between mt-1 small fw-bold">
                     <span>0</span>
                     <span>100</span>
                 </div>
             </div>
-        </div>
-        <div class="textoFinal">
-            Conclua as suas metas para conquistar pontos e evoluir o nível do seu pet.
-        </div>
+        </main>
+
+        <footer class="container pb-5">
+            <div class="row justify-content-center text-center">
+                <div class="col-md-8">
+                    <p class="fw-bold text-dark px-3">
+                        Conclua as suas metas para conquistar pontos e evoluir o nível do seu pet.
+                    </p>
+                </div>
+            </div>
+        </footer>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="./js/pet.js"></script>
     <script type="module" src="js/user-data.js"></script>
 </body>
-
 </html>
-
