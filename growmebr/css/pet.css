@@ -1,200 +1,69 @@
+:root {
+    --bg-main: #d9e1e1;
+    --primary-teal: #7ba9a9;
+    --bg-header: rgba(0, 0, 0, 0.54);
+}
+
 body {
-    background-color: #d9e1e1;
-    margin: 0;
-    font-family: Arial, sans-serif;
-}
-
-.principal{
-    width: 100%;
-    height: 100vh;
-    background-color: #d9e1e1;
-}
-
-.header{
-    width: 100%;
-    height: 20%;
-    background-color: #d9e1e1;
-    display: flex; 
-    align-items: center;
-    justify-content: center;
-}
-.headerButon{
-    width: 90%;
-    height: 40%;
-    background-color: #0000008A;
-    border-radius: 3.125rem;
-    display: flex;
-}
-.headerButon:hover{
-    width: 91%;
-    height: 41%;
-    transition: 0.4s ease;
-}
-.logo{
-    width: 50%;
-    height: 100%;
-    background-color: transparent;
-    border-radius: 3.125rem 0 0 3.125rem;
-    display: flex;
-    align-items: center;
-    
-}
-.logo img{
-    width: 3.5rem;
-    height: auto;
-    margin-top: 0px;
-    margin-left: 25px;
-}
-.links{
-    width:50%;
-    height: 100%;
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    border-radius: 0 3.125rem 3.125rem 0;
-}
-.links a{
-    text-decoration: none;
-    font-family:system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 0.9375rem;
-    font-weight:200;
-    color: white;
-}
-.links a:hover{
-    color: black;
-    font-size: 1.0625rem;
-    font-weight: 500;
-    transition: 0.2s ease;
-}
-.conteudoCentral{
-    width: 100%;
-    height: 60%;
-    background-color: #d9e1e1;
-    text-align: center;
-}
-
-/* --- NOVO ESTILO DE EDIÇÃO DO NOME DO PET --- */
-
-.titulo-edit-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    margin-top: 3.125rem;
-}
-
-.titulo-edit-container h1 {
-    margin: 0;
-    font-size: 20px; /* Tamanho igual ao do Perfil */
+    background-color: var(--bg-main);
     font-family: system-ui, -apple-system, sans-serif;
-    font-weight: 600;
-    color: #181818;
 }
 
+/* Header Custom */
+.bg-header-custom {
+    background-color: var(--bg-header);
+    backdrop-filter: blur(8px);
+}
+.nav-link {
+    color: white !important;
+    font-weight: 200;
+    transition: 0.3s;
+}
+
+.nav-link:hover {
+    color: #000000 !important;
+    font-weight: 500;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Icone de Edição */
 .edit-icon-btn {
     display: inline-block;
     width: 20px;
     height: 20px;
-    position: relative;
-    cursor: pointer;
     opacity: 0.5;
-    transition: opacity 0.3s ease;
-}
-
-.edit-icon-btn:hover {
-    opacity: 1;
-}
-
-.edit-icon-btn::after {
-    content: "";
-    width: 18px;
-    height: 18px;
-    position: absolute;
-    left: 0;
-    top: 50%;
-    transform: translateY(-50%);
-    /* O mesmo SVG do seu perfil */
+    transition: 0.3s;
     background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="%23333" viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1.003 1.003 0 000-1.41l-2.34-2.34a1.003 1.003 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>');
     background-size: contain;
     background-repeat: no-repeat;
 }
 
-/* O Input camaleão para o Pet */
-input.input-nome-edicao {
-    font-size: inherit !important;
-    font-family: inherit !important;
-    font-weight: inherit !important;
-    color: inherit !important;
-    text-align: center;
-    background: transparent !important;
-    border: none !important;
-    outline: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    width: auto;
-    display: inline-block;
+.edit-icon-btn:hover { opacity: 1; }
+
+/* Pet e Barra */
+.pinguin {
+    width: 140px;
+    transition: all 0.5s ease;
 }
 
-.pinguin {
-    width: 8.75rem;
-    display: block;
-    margin: 0.625rem auto;
-    align-items: center;
-    justify-content: center;
+.bg-teal-custom {
+    background-color: var(--primary-teal) !important;
 }
-.pontos {
-    color: #181818;
-    margin: 0.625rem 0;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 0.9375rem;
-    font-weight: 700;
+
+/* Animações */
+.anim-pinguim {
+    animation: floating 3s ease-in-out infinite;
 }
-.containerNivel {
-    margin-top: 3.125rem;
+
+@keyframes floating {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
-.textoNivel {
-    color: #181818;
-    display: block;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    margin-bottom: 0.3125rem;
-}
-.barraNivel {
-    width: 14.375rem;
-    height: 1.25rem;
-    background: white;
-    border-radius: 1.25rem;
-    border: 0.125rem solid #000;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-}
-.progresso {
-    width: 0%; /* aqui você aumenta conforme o nível */
-    height: 100%;
-    background: #7ba9a9;
-    transition: width 0.5s ease;
-}
-.marcadores {
-    width: 14.375rem;
-    margin: 0.3125rem auto 0;
-    display: flex;
-    justify-content: space-between;
-    font-size: 0.875rem;
-}
-.textoFinal{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 0.9375rem;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    color: #181818;
-}
-/* Animação de pulo */
+
 @keyframes pulinho {
     0% { transform: translateY(0); }
     50% { transform: translateY(-20px) scale(1.1); }
@@ -204,171 +73,30 @@ input.input-nome-edicao {
 .animar-pulo {
     animation: pulinho 0.5s ease;
 }
-
-/* Transição suave para a troca de imagem */
-.pinguin {
-    transition: all 0.5s ease;
+/* O Input "camaleão" que remove estilos de caixa padrão */
+input.input-nome-edicao {
+    font-size: inherit !important;
+    font-family: inherit !important;
+    font-weight: inherit !important;
+    color: #181818 !important; /* Cor do texto */
+    text-align: center;
+    background: transparent !important; /* Remove o fundo branco */
+    border: none !important;            /* Remove a borda preta */
+    outline: none !important;           /* Remove o contorno ao clicar */
+    padding: 0 !important;
+    margin: 0 !important;
+    width: auto;
+    display: inline-block;
+    box-shadow: none !important;        /* Remove sombras de foco do Bootstrap */
 }
 
+/* Opcional: uma linha sutil embaixo apenas enquanto edita para o usuário saber que está digitando */
+input.input-nome-edicao:focus {
+    border-bottom: 1px dashed #7ba9a9 !important; 
+}
 
-/* ===============================
-   MOBILE PREMIUM — PÁGINA PET
-================================ */
-
-@media screen and (max-width: 768px) {
-
-    body {
-        background: linear-gradient(180deg, #eef5f5, #d9e1e1);
-    }
-
-    .principal {
-        min-height: 100vh;
-        height: auto;
-        padding-bottom: 30px;
-    }
-
-
-    /* ---------- HEADER ---------- */
-
-    .header {
-        padding: 18px 0;
-        height: auto;
-    }
-
-    .headerButon {
-        flex-direction: column;
-        width: 94% !important;
-        padding: 15px 0;
-        gap: 12px;
-
-        background: rgba(0,0,0,0.55);
-        backdrop-filter: blur(8px);
-
-        border-radius: 22px;
-        box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-    }
-
-    .headerButon:hover {
-        width: 94% !important;
-        height: auto !important;
-    }
-
-    .logo {
-        justify-content: center;
-    }
-
-    .logo img {
-        width: 3rem;
-        margin: 0;
-    }
-
-    .links {
-        width: 100%;
-        display: flex;
-        justify-content: space-evenly;
-        padding: 0 10px;
-    }
-
-    .links a {
-        font-size: 0.9rem;
-        font-weight: 400;
-        opacity: 0.95;
-    }
-
-
-    /* ---------- CONTEÚDO ---------- */
-
-    .conteudoCentral {
-        padding: 25px 10px;
-        height: auto;
-    }
-
-    .conteudoCentral h1 {
-        font-size: 1.4rem;
-        margin-top: 1.5rem;
-        color: #1c2b2b;
-    }
-
-
-    /* ---------- PINGUIM ---------- */
-
-    .pinguin {
-        width: 170px;
-        margin: 15px auto;
-
-        filter: drop-shadow(0 10px 22px rgba(0,0,0,0.15));
-
-        transition: transform 0.3s ease;
-    }
-
-    .pinguin:active {
-        transform: scale(1.05);
-    }
-
-
-    /* ---------- PONTOS ---------- */
-
-    .pontos {
-        font-size: 1rem;
-        font-weight: 600;
-        letter-spacing: 0.3px;
-    }
-
-
-    /* ---------- NIVEL ---------- */
-
-    .containerNivel {
-        margin-top: 1.8rem;
-    }
-
-    .textoNivel {
-        font-size: 1rem;
-        margin-bottom: 6px;
-        color: #2a3a3a;
-    }
-
-    .barraNivel {
-        width: 90%;
-        max-width: 19rem;
-
-        height: 1.4rem;
-
-        border-radius: 30px;
-
-        border: none;
-
-        background: #ffffff;
-
-        box-shadow: inset 0 2px 6px rgba(0,0,0,0.15);
-    }
-
-    .progresso {
-        background: linear-gradient(90deg, #7ba9a9, #5f8f8f);
-        border-radius: 30px;
-    }
-
-    .marcadores {
-        width: 90%;
-        max-width: 19rem;
-        margin-top: 6px;
-
-        font-size: 0.85rem;
-        opacity: 0.85;
-    }
-
-
-    /* ---------- TEXTO FINAL ---------- */
-
-    .textoFinal {
-        margin-top: 15px;
-
-        font-size: 0.95rem;
-        font-weight: 600;
-
-        color: #2a3a3a;
-
-        text-align: center;
-        line-height: 1.4;
-    }
-
+/* Responsividade Mobile */
+@media (max-width: 768px) {
+    .pinguin { width: 120px; }
+    .bg-header-custom { border-radius: 20px !important; }
 }
