@@ -3,9 +3,14 @@ import { userDataManager } from "./user-data.js";
 
 // Elementos da página
 const spanPontos = document.getElementById('pontos-pet');
-const barraProgresso = document.querySelector('.progresso');
-const textoNivel = document.querySelector('.textoNivel');
+const barraProgresso = document.getElementById('progresso-pet'); // Use o ID do HTML
+const textoNivel = document.querySelector('.container-nivel span.d-block'); // Pega o "Nível 1"
 const imgPinguim = document.querySelector('.pinguin');
+
+// IDs extras para os números embaixo da barra (vamos atualizar eles também)
+// Se quiser que eles mudem, adicione IDs no HTML ou use seletores de posição:
+const metaInferior = document.querySelector('.container-nivel .justify-content-between span:first-child');
+const metaSuperior = document.querySelector('.container-nivel .justify-content-between span:last-child');
 
 // Configurações do sistema de níveis
 const METAS_NIVEIS = [100, 300, 500, 750, 1000];
@@ -53,43 +58,45 @@ function calcularNivel(pontos) {
 function atualizarInterfacePet(dadosUsuario) {
     if (!dadosUsuario) return;
 
-    // Atualizar nome do pet
+    // Atualizar nome do pet (mantenha sua lógica)
     if (spanNomePet) {
-        const nomePet = dadosUsuario.pet?.nome?.trim();
-
-        if (nomePet) {
-            spanNomePet.textContent = nomePet;
-        } else {
-            spanNomePet.textContent = "Clique para definir";
-        }
+        spanNomePet.textContent = dadosUsuario.pet?.nome || "Clique para definir";
     }
 
-// Obter pontos pelo histórico (mais confiável)
-let pontos = dadosUsuario.historicoMetas?.totalConcluidas || 0;
+    // Obter pontos totais
+    let pontos = dadosUsuario.historicoMetas?.totalConcluidas || 0;
 
-    // Atualizar dados do pet (se necessário)
-    const dadosPetAtuais = dadosUsuario.pet || { nome: "", nivel: 1, pontos: 0 };
-    if (dadosPetAtuais.pontos !== pontos) {
-        userDataManager.atualizarPet({
-            ...dadosPetAtuais,
-            pontos: pontos
-        });
-    }
-
-    // Calcular nível
+    // Calcular nível e os limites para a barra
     const { nivel, progresso } = calcularNivel(pontos);
-
-    // Atualizar elementos da tela
-    if (spanPontos) spanPontos.textContent = pontos;
-    if (barraProgresso) barraProgresso.style.width = `${progresso}%`;
-
-    if (textoNivel) {
-        if (nivel === "max") {
-            textoNivel.textContent = "NÍVEL MÁXIMO";
-        } else {
-            textoNivel.textContent = `NÍVEL ${nivel}`;
-        }
+    
+    // Descobrir quais são os limites de pontos para este nível específico
+    let minPontos = 0;
+    let maxPontos = METAS_NIVEIS[0];
+    
+    if (nivel !== "max") {
+        const indexNivel = (nivel === "max" ? 5 : nivel) - 1;
+        minPontos = indexNivel === 0 ? 0 : METAS_NIVEIS[indexNivel - 1];
+        maxPontos = METAS_NIVEIS[indexNivel] || METAS_NIVEIS[METAS_NIVEIS.length - 1];
     }
+
+    // --- ATUALIZAÇÃO DA INTERFACE ---
+    
+    if (spanPontos) spanPontos.textContent = pontos;
+
+    // AQUI ESTAVA O ERRO: Atualizando a largura da barra do Bootstrap
+    if (barraProgresso) {
+        barraProgresso.style.width = `${progresso}%`;
+        barraProgresso.setAttribute('aria-valuenow', Math.floor(progresso));
+    }
+
+    // Atualiza o texto "Nível X" em cima da barra
+    if (textoNivel) {
+        textoNivel.textContent = nivel === "max" ? "NÍVEL MÁXIMO" : `NÍVEL ${nivel}`;
+    }
+
+    // Atualiza os números 0 e 100 para os valores reais do nível atual
+    if (metaInferior) metaInferior.textContent = minPontos;
+    if (metaSuperior) metaSuperior.textContent = nivel === "max" ? "∞" : maxPontos;
 
     // Atualizar imagem do pinguim
     if (imgPinguim) {
@@ -182,6 +189,5 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }, 1000);
 });
-
 
 
