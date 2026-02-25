@@ -5,92 +5,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GrowMe</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
     <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png">
 </head>
 
 <body>
-    <div class="principal">
-        <div class="header">
-            <div class="headerButon">
-                <div class="logo">
-                    <img src="img/pinguin__1_-removebg-preview.png" alt="Logo do GrowMe">
-                </div>
-                <div class="links">
-                    <a href="index.html">HOME</a>  <!-- CORRIGIDO -->
-                    <a href="pet.html">MEU PET</a>
-                    <a href="planner.html">PLANNER</a>
-                    <a href="perfil.html">MEU PERFIL</a>
+    <div class="principal d-flex flex-column justify-content-between min-vh-100">
+
+        <nav class="navbar navbar-expand-lg mt-4">
+            <div class="container bg-header-custom rounded-pill py-2 px-4 shadow-hover">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="img/pinguin__1_-removebg-preview.png" alt="Logo" width="50">
+                </a>
+                <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="navbar-nav gap-3 text-center">
+                        <a class="nav-link text-white fw-bold active" href="index.html">HOME</a>
+                        <a class="nav-link text-white fw-light" href="pet.html">MEU PET</a>
+                        <a class="nav-link text-white fw-light" href="planner.html">PLANNER</a>
+                        <a class="nav-link text-white fw-light" href="perfil.html">MEU PERFIL</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="conteudoCentral">
-            <div class="nomeSite">
-                <h1>GrowMe</h1>
-            </div>
-            <div class="imgPinguin">
-                <img src="img/pinguinzin-removebg-preview.png" alt="Imagem de um pinguim">
-            </div>
-        </div>
-        <div class="headerInferior">
-            <div class="headerInferiorButon">
-                <div class="texto">
-                    <h1>Cresça com GrowMe! Organize agora as suas metas semanais</h1>
+        </nav>
+
+        <main class="container my-auto">
+            <div class="row align-items-center justify-content-center gap-md-5 text-center text-md-start">
+
+                <div class="col-12 col-md-auto mb-4 mb-md-0">
+                    <h1 class="display-1 fw-bold text-dark m-0">GrowMe</h1>
                 </div>
-                <div class="button">
-                    <button data-modal="modalLogin" class="btn-seta">
-                        <svg width="120" height="20" viewBox="0 0 120 20" fill="none" stroke="black" stroke-width="2">
+
+                <div class="col-12 col-md-auto text-center">
+                    <div class="imgPinguin">
+                        <img src="img/pinguinzin-removebg-preview.png" class="img-fluid anim-pinguim"
+                            style="max-width: 250px;" alt="Pinguim GrowMe">
+                    </div>
+                </div>
+
+            </div>
+        </main>
+
+        <footer class="container mb-5">
+            <div class="row justify-content-center">
+                <div
+                    class="col-11 col-lg-10 bg-black-custom rounded-pill p-3 d-flex align-items-center justify-content-between shadow-hover">
+                    <h2 class="h5 text-white m-0 ps-md-4 fw-light">Cresça com GrowMe! Organize suas metas.</h2>
+                    <button class="btn btn-seta-custom rounded-pill px-4" data-bs-toggle="modal"
+                        data-bs-target="#modalLogin">
+                        <svg width="60" height="20" viewBox="0 0 120 20" fill="none" stroke="black" stroke-width="4">
                             <line x1="5" y1="10" x2="110" y2="10" />
                             <polyline points="100,5 110,10 100,15" />
                         </svg>
                     </button>
+                </div>
+            </div>
+        </footer>
+    </div>
 
-                    <dialog class="modal" id="modalLogin">
-                        <button class="close-modal" data-modal="modalLogin">
-                            X
-                        </button>
-                        <div class="principalModal">
-                            <div class="quadradoGeral">
-                                <div class="titulo">
-                                    <h1>Login</h1>
-                                </div>
-                                <div class="google" onclick="loginGoogle()">
-                                    <i class="fa-brands fa-google"></i>
-                                    <h1>Continue com Google</h1>
-                                </div>
-                                <div class="email">
-                                    <label>Email</label>
-                                    <input type="email" id="loginEmail" placeholder="Email">
-                                    <input type="password" id="loginSenha" placeholder="Senha">
-                                    <button class="entrar" onclick="login()">Entrar</button>
-                                </div>
-                                <div class="divisor">
-                                    <div class="linha"></div>
-                                </div>
-                                <div class="textoModal">
-                                    <h1>Não tem uma conta? Cadastre-se: </h1>
-                                </div>
-                                <div class="cadastro">
-                                    <div class="email">
-                                        <input type="email" id="cadEmail" placeholder="Email">
-                                    </div>
-                                    <div class="senha">
-                                        <input type="password" id="cadSenha" placeholder="Senha">
-                                        <input type="password" id="cadConfirmar" placeholder="Confirmar">
-                                        <button class="butonCads" onclick="cadastrar()">Cadastrar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </dialog>
+    <div class="modal fade" id="modalLogin" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content bg-modal-custom p-4 text-white">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h5 class="modal-title color-primary fw-bold">Login</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+                </div>
+
+                <div class="modal-body p-0">
+                    <div class="btn btn-light w-100 rounded-pill d-flex align-items-center justify-content-center gap-2 mb-3 py-2"
+                        onclick="loginGoogle()">
+                        <i class="fa-brands fa-google text-dark"></i>
+                        <span class="text-dark fw-bold">Continue com Google</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small">Email</label>
+                        <input type="email" id="loginEmail" class="form-control rounded-pill text-center mb-2"
+                            placeholder="Email">
+                        <input type="password" id="loginSenha" class="form-control rounded-pill text-center"
+                            placeholder="Senha">
+                    </div>
+
+                    <button class="btn btn-primary-custom w-75 d-block mx-auto rounded-pill mb-4"
+                        onclick="login()">Entrar</button>
+
+                    <hr class="bg-white my-4">
+
+                    <p class="text-center color-primary small mb-3">Não tem uma conta? Cadastre-se:</p>
+
+                    <div class="mb-3">
+                        <input type="email" id="cadEmail" class="form-control rounded-pill text-center mb-2"
+                            placeholder="Email">
+                        <input type="password" id="cadSenha" class="form-control rounded-pill text-center mb-2"
+                            placeholder="Senha">
+                        <input type="password" id="cadConfirmar" class="form-control rounded-pill text-center mb-3"
+                            placeholder="Confirmar">
+                        <button class="btn btn-primary-custom w-75 d-block mx-auto rounded-pill"
+                            onclick="cadastrar()">Cadastrar</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/home.js"></script>
-    <script type="module" src="js/auth.js"></script> 
+    <script type="module" src="js/auth.js"></script>
 </body>
 
 </html>
