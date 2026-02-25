@@ -4,126 +4,150 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Planner</title>
+    <title>Pinguin Planner</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="css/planner.css">
-    <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png">  <!-- CORRIGIDO -->
+    <link rel="icon" href="img/pinguin__1_-removebg-preview.png" type="image/png">
 </head>
 
-<body>
-    <div class="principal">
-        <div class="header">
-            <div class="headerButon">
-                <div class="logo">
-                    <img src="img/pinguin2.png" alt="pinguinplanner" class="pinguinzito">
-                </div>
-                <div class="links">
-                    <a href="index.html">HOME</a>
-                    <a href="pet.html">MEU PET</a>
-                    <a href="planner.html">PLANNER</a>
-                    <a href="perfil.html">MEU PERFIL</a>
+<body class="bg-custom">
+    <div class="container-fluid min-vh-100 p-0">
+        <nav class="navbar navbar-expand-lg mt-4">
+            <div class="container bg-header-custom rounded-pill py-1 px-4 my-nav-container shadow-hover">
+                <a class="navbar-brand d-flex align-items-center" href="#">
+                    <img src="img/pinguin__1_-removebg-preview.png" alt="Logo" width="50">
+                </a>
+                
+                <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <div class="navbar-nav gap-3 text-center py-3 py-lg-0">
+                        <a class="nav-link" href="index.html">HOME</a>
+                        <a class="nav-link" href="pet.html">MEU PET</a>
+                        <a class="nav-link active" href="planner.html">PLANNER</a>
+                        <a class="nav-link" href="perfil.html">MEU PERFIL</a>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="conteudoPlanner">
-            <div class="titulo">
-                <h1>Planner Semanal</h1>
+        </nav>
+
+        <main class="container-fluid px-2 px-md-4 py-4">
+            <div class="text-center mb-5 mt-3">
+                <h1 class="display-4 fw-bold color-text-title">Planner Semanal</h1>
             </div>
-            <div class="semana">
 
-                <div class="dia">
-                    <div class="quadroGeral">
-                        <div class="nomeDia">
-                            <h1>Domingo</h1>
+            <div class="row row-cols-1 row-cols-md-2 row-cols-lg-7 g-2 justify-content-center">
+                
+                <div class="col">
+                    <div class="card h-100 day-card border-0 shadow-sm">
+                        <div class="card-header border-0 day-header mt-2 mx-2 text-center">
+                            <h5 class="m-0 text-white py-1">Domingo</h5>
                         </div>
-                        <div class="metas" id="metas-domingo"></div>
-                        <div class="adicionarMeta">
-                            <button onclick="addMeta('domingo')">+ Cadastrar meta</button>
+                        <div class="card-body p-2 d-flex flex-column">
+                            <div class="metas-container mb-3" id="metas-domingo"></div>
+                            <div class="mt-auto">
+                                <button class="btn btn-add-meta w-100 text-start" onclick="addMeta('domingo')">
+                                    <i class="mdi mdi-plus"></i> Meta
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="dia">
-                    <div class="quadroGeral">
-                        <div class="nomeDia">
-                            <h1>Segunda-feira</h1>
+                <div class="col">
+                    <div class="card h-100 day-card border-0 shadow-sm">
+                        <div class="card-header border-0 day-header mt-2 mx-2 text-center">
+                            <h5 class="m-0 text-white py-1">Segunda</h5>
                         </div>
-                        <div class="metas" id="metas-segunda"></div>
-                        <div class="adicionarMeta">
-                            <button onclick="addMeta('segunda')">+ Cadastrar meta</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dia">
-                    <div class="quadroGeral">
-                        <div class="nomeDia">
-                            <h1>Terça-feira</h1>
-                        </div>
-                        <div class="metas" id="metas-terca"></div>
-                        <div class="adicionarMeta">
-                            <button onclick="addMeta('terca')">+ Cadastrar meta</button>
+                        <div class="card-body p-2 d-flex flex-column">
+                            <div class="metas-container mb-3" id="metas-segunda"></div>
+                            <div class="mt-auto">
+                                <button class="btn btn-add-meta w-100 text-start" onclick="addMeta('segunda')">+ Meta</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="dia">
-                    <div class="quadroGeral">
-                        <div class="nomeDia">
-                            <h1>Quarta-feira</h1>
+                <div class="col">
+                    <div class="card h-100 day-card border-0 shadow-sm">
+                        <div class="card-header border-0 day-header mt-2 mx-2 text-center">
+                            <h5 class="m-0 text-white py-1">Terça</h5>
                         </div>
-                        <div class="metas" id="metas-quarta"></div>
-                        <div class="adicionarMeta">
-                            <button onclick="addMeta('quarta')">+ Cadastrar meta</button>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="dia">
-                    <div class="quadroGeral">
-                        <div class="nomeDia">
-                            <h1>Quinta-feira</h1>
-                        </div>
-                        <div class="metas" id="metas-quinta"></div>
-                        <div class="adicionarMeta">
-                            <button class="btn" onclick="addMeta('quinta')">+ Cadastrar meta</button>
+                        <div class="card-body p-2 d-flex flex-column">
+                            <div class="metas-container mb-3" id="metas-terca"></div>
+                            <div class="mt-auto">
+                                <button class="btn btn-add-meta w-100 text-start" onclick="addMeta('terca')">+ Meta</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="dia">
-                    <div class="quadroGeral">
-                        <div class="nomeDia">
-                            <h1>Sexta-feira</h1>
+                <div class="col">
+                    <div class="card h-100 day-card border-0 shadow-sm">
+                        <div class="card-header border-0 day-header mt-2 mx-2 text-center">
+                            <h5 class="m-0 text-white py-1">Quarta</h5>
                         </div>
-                        <div class="metas" id="metas-sexta"></div>
-                        <div class="adicionarMeta">
-                            <button onclick="addMeta('sexta')">+ Cadastrar meta</button>
+                        <div class="card-body p-2 d-flex flex-column">
+                            <div class="metas-container mb-3" id="metas-quarta"></div>
+                            <div class="mt-auto">
+                                <button class="btn btn-add-meta w-100 text-start" onclick="addMeta('quarta')">+ Meta</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="dia">
-                    <div class="quadroGeral">
-                        <div class="nomeDia">
-                            <h1>Sábado</h1>
+                <div class="col">
+                    <div class="card h-100 day-card border-0 shadow-sm">
+                        <div class="card-header border-0 day-header mt-2 mx-2 text-center">
+                            <h5 class="m-0 text-white py-1">Quinta</h5>
                         </div>
-                        <div class="metas" id="metas-sabado"></div>
-                        <div class="adicionarMeta">
-                            <button onclick="addMeta('sabado')">+ Cadastrar meta</button>
+                        <div class="card-body p-2 d-flex flex-column">
+                            <div class="metas-container mb-3" id="metas-quinta"></div>
+                            <div class="mt-auto">
+                                <button class="btn btn-add-meta w-100 text-start" onclick="addMeta('quinta')">+ Meta</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 day-card border-0 shadow-sm">
+                        <div class="card-header border-0 day-header mt-2 mx-2 text-center">
+                            <h5 class="m-0 text-white py-1">Sexta</h5>
+                        </div>
+                        <div class="card-body p-2 d-flex flex-column">
+                            <div class="metas-container mb-3" id="metas-sexta"></div>
+                            <div class="mt-auto">
+                                <button class="btn btn-add-meta w-100 text-start" onclick="addMeta('sexta')">+ Meta</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <div class="card h-100 day-card border-0 shadow-sm">
+                        <div class="card-header border-0 day-header mt-2 mx-2 text-center">
+                            <h5 class="m-0 text-white py-1">Sábado</h5>
+                        </div>
+                        <div class="card-body p-2 d-flex flex-column">
+                            <div class="metas-container mb-3" id="metas-sabado"></div>
+                            <div class="mt-auto">
+                                <button class="btn btn-add-meta w-100 text-start" onclick="addMeta('sabado')">+ Meta</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
             </div>
-        </div>
+        </main>
     </div>
-    
-    <!-- APENAS ESTES SCRIPTS -->
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script type="module" src="js/firebase.js"></script>
-<script type="module" src="js/firebase-planner.js"></script>
-<script type="module" src="js/planner.js"></script>
+    <script type="module" src="js/planner.js"></script>
+    <script type="module" src="js/firebase-planner.js"></script>
 </body>
-
-
 </html>
